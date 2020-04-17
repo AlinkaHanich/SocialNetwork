@@ -1,0 +1,13 @@
+.nav {
+    grid-area: n;
+    background-color: #c36767;
+    padding: 1rem;
+}
+
+.nav__link {
+    color: white;
+}
+
+.nav__link.active {
+    color: yellow;
+}

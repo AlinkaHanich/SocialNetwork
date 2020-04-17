@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-areas: "h h " "n c " "f f ";
+    grid-template-rows: .7fr 10fr 1fr;
+    grid-template-columns: 3fr 10fr;
+    grid-gap: 5px;
+    height: calc(100vh - 5px)
+}
+
+.userLogo {
+    width: 2rem;
+}
