@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.scss';
 import FriendsContainer from './Friends/FriendsContainer'
 
-const Navbar = (props) => {
+const Navbar = () => {
 	debugger
 
 	return (
@@ -38,8 +38,8 @@ const Navbar = (props) => {
 					Friends
 				</NavLink>
 			</div>
-			<FriendsContainer store={props.store}/>
-			{/* <Friends usersData={props.state.messagesPage.usersData}/> */}
+			<FriendsContainer />
+		
 		</nav>
 	);
 };

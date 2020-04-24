@@ -1,14 +1,11 @@
-import React from 'react';
+import {connect} from 'react-redux'
 import UserDescription from './UserDescription'
 
-const UserDescriptionContainer = (props) => {
-	debugger
-	let state = props.store.getState()
-	let userDescriptionData = state.profilesPage.userDescriptionData;
-console.log(userDescriptionData, 'user')
-	return (
- 		<UserDescription userDescriptionData={userDescriptionData}/>
-	);
+const mapStateToProps = (state) => ({ userDescriptionData: state.profilesPage.userDescriptionData });
+
+const mapDispatchToProps = (dispatch) => {
+
 };
+const UserDescriptionContainer = connect(mapStateToProps, mapDispatchToProps)(UserDescription);
 
 export default UserDescriptionContainer;

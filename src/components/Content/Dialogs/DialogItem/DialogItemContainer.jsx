@@ -1,9 +1,9 @@
-import Friends from './Friends';
+import DialogItem from './DialogItem';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({ usersData: state.messagesPage.usersData });
 
 const mapDispatchToProps = (dispatch) => {};
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
 
-export default FriendsContainer;
+const DialogItemContainer = connect(mapStateToProps, mapDispatchToProps)(DialogItem);
+export default DialogItemContainer;

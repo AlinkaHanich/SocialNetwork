@@ -2,9 +2,8 @@ import React from 'react';
 import s from './UserPosts.module.scss';
 import Post from './Post/Post';
 
-
 const UserPosts = (props) => {
-	debugger;
+	debugger
 	let onAddPost = () => {
 		props.addPost();
 	};
@@ -15,9 +14,13 @@ const UserPosts = (props) => {
 	};
 	return (
 		<div className={s.posts}>
-			<textarea onChange={onPostValueChange} value={props.profilesPage.postValue.value} placeholder="What is on your mind?" />
+			<textarea
+				onChange={onPostValueChange}
+				value={props.postValue}
+				placeholder="What is on your mind?"
+			/>
 			<button onClick={onAddPost}>Add post</button>
-			<Post postData={props.profilesPage.postData} />
+			<Post postData={props.postData} />
 		</div>
 	);
 };

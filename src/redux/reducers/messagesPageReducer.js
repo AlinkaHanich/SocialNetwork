@@ -76,18 +76,26 @@ let initialState = {
 
 let messagesPageReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_MESSAGE:
+		case ADD_MESSAGE: {
 			let newMessage = {
 				id: 7,
 				message: state.messagesTextareaValue.message,
 				userLogo: state.messagesTextareaValue.userLogo
 			};
-			state.messagesData.push(newMessage);
-			state.messagesTextareaValue.message = '';
-			return state;
-		case ADD_NEW_MESSAGE_VALUE:
-			state.messagesTextareaValue.message = action.newValue;
-			return state;
+			return {
+				...state,
+				messagesData: [ ...state.messagesData, newMessage ],
+				message: { ...(state.messagesTextareaValue.message = '') }
+			};
+		}
+		case ADD_NEW_MESSAGE_VALUE: {
+			let newValue = action.newValue;
+			return {
+				...state,
+
+				messagesTextareaValue: { ...state.messagesTextareaValue, message: newValue }
+			};
+		}
 		default:
 			return state;
 	}

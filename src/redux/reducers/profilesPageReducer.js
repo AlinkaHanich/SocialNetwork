@@ -1,7 +1,7 @@
 const ADD_NEW_POST_VALUE = 'ADD_NEW_POST_VALUE';
 const ADD_POST = 'ADD_POST';
 
-let initialState =  {
+let initialState = {
 	postData: [
 		{ id: 1, post: 'hello, world', likes: 2 },
 		{ id: 2, post: 'hello, everyone', likes: 2 },
@@ -18,27 +18,30 @@ let initialState =  {
 			webSite: 'alina-ganich.com'
 		}
 	],
-	postValue: { value: 'utyiyoiyi' }
-}
+	postValue: ''
+};
 
 let profilesPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
 			let newPost = {
 				id: 5,
-				post: state.postValue.value,
+				post: state.postValue,
 				likes: 0
 			};
-			state.postData.push(newPost);
-			state.postValue.value = '';
-			return state;
+			return {
+				...state,
+				postData: [ ...state.postData, newPost ],
+				postValue: ''
+			};
 		case ADD_NEW_POST_VALUE:
-			state.postValue.value = action.newValue;
-			return state;
+			return {
+				...state,
+				postValue: action.newValue
+			};
 		default:
 			return state;
-    }
-    
+	}
 };
 export const addNewPostValueActionCreator = (value) => ({ type: ADD_NEW_POST_VALUE, newValue: value });
 export const addPostActionCreator = () => ({ type: ADD_POST });

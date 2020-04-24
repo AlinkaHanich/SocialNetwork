@@ -1,24 +1,21 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { addPostActionCreator, addNewPostValueActionCreator } from '../../../../redux/reducers/profilesPageReducer';
+import UserPosts from './UserPosts';
 
-import {addPostActionCreator, addNewPostValueActionCreator} from '../../../../redux/reducers/profilesPageReducer'
-import UserPosts from './UserPosts'
+const mapStateToProps = (state) => ({ 
+	postValue: state.profilesPage.postValue,
+	postData: state.profilesPage.postData });
 
-const UserPostsContainer = (props) => {
-	debugger;
-	let state = props.store.getState();
-	console.log(state, 'state')
-
-	let addPost = () => {
-		props.store.dispatch(addPostActionCreator());
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addPost: () => {
+			dispatch(addPostActionCreator());
+		},
+		updatePostValue: (post) => {
+			dispatch(addNewPostValueActionCreator(post));
+		}
 	};
-	let updatePostValue = (post) => {
-		
-
-		props.store.dispatch(addNewPostValueActionCreator(post));
-	};
-	return (
-		<UserPosts addPost={addPost} updatePostValue={updatePostValue} profilesPage={state.profilesPage} />
-	);
 };
+const UserPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserPosts);
 
 export default UserPostsContainer;

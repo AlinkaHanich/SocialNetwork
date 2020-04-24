@@ -1,31 +1,32 @@
 import React from 'react';
 import s from './Messages.module.scss';
-import { addMessageActionCreator, addNewMessageValueActionCreator} from '../../../../redux/reducers/messagesPageReducer';
-
+import UserLogo from '../../../UserLogo/UserLogo'
 
 const Messages = (props) => {
+	debugger;
 	let onMessageChange = (e) => {
 		let bodyMessage = e.target.value;
-		props.dispatch(addNewMessageValueActionCreator(bodyMessage));
+		props.changeMessage(bodyMessage);
 	};
-	console.log(onMessageChange, 'on message change')
+	console.log(onMessageChange, 'on message change');
 
-	let addNewMessage = () => {
-		props.dispatch(addMessageActionCreator());
+	let onAddNewMessage = () => {
+		props.addNewMessage();
 	};
 
 	return (
 		<div className={s.messages}>
 			<div className={s.usersMessages}>
-				{props.messagesPageState.messagesData.map((item, id) => (
+				{props.messagesData.map((item, id) => (
 					<div className={s.message} key={item.id}>
-						<img className="userLogo" src={item.userLogo} alt="user" />
+					<UserLogo userLogo={item.userLogo}/>
+						
 						{item.message}
 					</div>
 				))}
 			</div>
 			<div className={s.receivedMessages}>
-				{props.messagesPageState.receivedMessagesData.map((item, id) => (
+				{props.receivedMessagesData.map((item, id) => (
 					<div className={s.message} key={item.id}>
 						<img className="userLogo" src={item.userLogo} alt="user" />
 						{item.message}
@@ -33,8 +34,12 @@ const Messages = (props) => {
 				))}
 			</div>
 			<div>
-				<textarea onChange={onMessageChange} value={props.messagesPageState.messagesTextareaValue.message} placeholder='Enter your message' />
-				<button onClick={addNewMessage}>Send message</button>
+				<textarea
+					onChange={onMessageChange}
+					value={props.message}
+					placeholder="Enter your message"
+				/>
+				<button onClick={onAddNewMessage}>Send message</button>
 			</div>
 		</div>
 	);

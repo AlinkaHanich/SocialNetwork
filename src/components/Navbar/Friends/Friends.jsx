@@ -1,10 +1,12 @@
 import React from 'react';
 import s from './Friends.module.scss';
+import UserLogo from '../../UserLogo/UserLogo'
 
 const Friends = (props) => {
+	debugger
 	let usersElements = props.usersData.slice(0, 3).map((user, id) => (
 		<div className={s.friendItem}>
-			<img className="userLogo" src={user.userLogo} alt="user" />
+			<UserLogo userLogo={user.userLogo}/>
 			<div key={id}>{user.name}</div>
 		</div>
 	));
